@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic To-Do App</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header>
+            <h1 class="app-title">Artistic To-Do List</h1>
+            
+            <button id="theme-toggle" class="btn theme-toggle" aria-label="Toggle dark theme">
+                🎨
+            </button>
+        </header>
+
+        <form id="new-task-form" class="task-form">
+            
+            <input 
+                type="text" 
+                id="task-input" 
+                placeholder="What needs to be done?" 
+                required
+                aria-label="New task description"
+            >
+
+            <div class="input-group">
+                <label for="due-date">Due:</label>
+                <input type="date" id="due-date" aria-label="Task due date">
+            </div>
+
+            <div class="input-group">
+                <label for="category-select">Category:</label>
+                <select id="category-select" aria-label="Task category">
+                    <option value="work">Work</option>
+                    <option value="school">School</option>
+                    <option value="life">Life</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn add-btn">Add Task</button>
+        </form>
+
+        </form>
+
+        <div class="sort-controls">
+            <button id="sort-due-date-btn" class="btn secondary-btn" data-sort-mode="priority">
+                Sort: Priority First
+            </button>
+        </div>
+
+        <section class="task-lists-container">
+            
+            <div class="category-list" data-category="work">
+                <h2 class="category-title">Work</h2>
+                <ul class="task-list" id="work-tasks">
+                    </ul>
+            </div>
+            
+            <div class="category-list" data-category="school">
+                <h2 class="category-title">School</h2>
+                <ul class="task-list" id="school-tasks">
+                    </ul>
+            </div>
+
+            <div class="category-list" data-category="life">
+                <h2 class="category-title">Life</h2>
+                <ul class="task-list" id="life-tasks">
+                    </ul>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+/* ======================================================= */
+/* 🧩 CSS Variables for Theme (REQUIRED) */
+/* Define the Light Theme variables here */
+/* ======================================================= */
+:root {
+    /* Colors - Purple Palette */
+    --clr-primary: #7b4397;    /* Primary Purple (Headings, Buttons) */
+    --clr-secondary: #a46fb3;  /* Secondary Purple (Accents, Toggles) */
+    --clr-accent: #e0c8ed;     /* Light Purple Accent (Borders, Hover) */
+    
+    /* Backgrounds */
+    --clr-bg-primary: #f7e9ff;  /* Lightest Background (Body) */
+    --clr-bg-secondary: #ffffff; /* Card/Container Background */
+    
+    /* Text & Status */
+    --clr-text: #333333;       /* Main text color */
+    --clr-text-secondary: #555555; /* Secondary text color */
+    --clr-complete: #888888;   /* Completed task text color */
+    --clr-priority: #d9534f;   /* Priority Flag Red (Phase Y) */
+
+    /* Typography */
+    --font-main: 'Chakra Petch', sans-serif;
+    
+    /* Transitions */
+    --transition-speed: 0.3s ease;
+}
+
+/* ======================================================= */
+/* 🌙 Dark Mode Variables (Feature X) */
+/* ======================================================= */
+.dark-mode {
+    --clr-bg-primary: #1e1529;   /* Dark purple body background */
+    --clr-bg-secondary: #291b38; /* Darker purple container background */
+    
+    --clr-text: #ffffff;
+    --clr-text-secondary: #cccccc;
+    --clr-accent: #3a3048;       /* Dark border color */
+    
+    --input-border: #4f425c;
+    --input-bg: #3a3048;
+}
+
+/* Apply Dark Mode Styles to Elements */
+.dark-mode body {
+    background-color: var(--clr-bg-primary);
+    color: var(--clr-text);
+}
+.dark-mode .app-container {
+    background-color: var(--clr-bg-secondary);
+}
+.dark-mode .task-form input,
+.dark-mode .task-form select {
+    border: 2px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--clr-text);
+}
+
+/* ======================================================= */
+/* Global and Structure Styles */
+/* ======================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--clr-bg-primary);
+    color: var(--clr-text);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--clr-bg-secondary);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Header & Title */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--clr-accent);
+}
+
+.app-title {
+    color: var(--clr-primary);
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+/* Buttons and Inputs */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.add-btn {
+    background-color: var(--clr-primary);
+    color: var(--clr-bg-secondary);
+    flex-shrink: 0;
+}
+
+.task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+input[type="text"], 
+input[type="date"], 
+select {
+    padding: 10px;
+    border: 2px solid var(--clr-accent);
+    border-radius: 8px;
+    font-family: inherit;
+    color: var(--clr-text);
+    background-color: var(--clr-bg-secondary);
+    transition: border-color var(--transition-speed);
+}
+
+/* Task List and Categories */
+.task-lists-container {
+    display: grid;
+    gap: 30px;
+    /* 3 columns on desktop, adapts to 2 or 1 as needed */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+}
+
+.category-title {
+    color: var(--clr-secondary);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--clr-accent);
+    padding-bottom: 5px;
+}
+
+.task-list {
+    list-style: none;
+}
+
+/* ======================================================= */
+/* Task Item Styling (Phase 1, Y, Z) */
+/* This is what was missing in your screenshot! */
+/* ======================================================= */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--clr-accent);
+    border-left: 5px solid var(--clr-secondary); /* Accent stripe */
+    border-radius: 8px;
+    background-color: var(--clr-bg-secondary);
+    transition: all var(--transition-speed);
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.task-text {
+    font-size: 1.1em;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+.task-due-date {
+    font-size: 0.85em;
+    color: var(--clr-text-secondary);
+    margin-top: 3px;
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Complete State Styling (Phase 1) */
+.task-item.completed {
+    opacity: 0.6;
+    border-left-color: var(--clr-complete);
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--clr-complete);
+}
+
+/* Priority Styling (Phase Y) */
+.priority-btn {
+    background: none;
+    padding: 0;
+    color: var(--clr-text-secondary); /* Default Gray Star */
+}
+
+.task-item.high-priority {
+    border-left-color: var(--clr-priority); /* Red stripe for high priority */
+    background-color: var(--clr-bg-primary); 
+}
+
+.task-item.high-priority .priority-btn {
+    color: var(--clr-priority); /* Solid Red/Orange Star */
+}
+
+css
+/* ======================================================= */
+/* Sort Controls Styling (Phase Z) */
+/* ======================================================= */
+.sort-controls {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: flex-end; /* Pushes the button to the right */
+}
+
+.secondary-btn {
+    background-color: var(--clr-accent);
+    color: var(--clr-text);
+    padding: 8px 12px;
+}
+
+.secondary-btn:hover {
+    background-color: var(--clr-secondary);
+    color: var(--clr-bg-secondary);
+}
